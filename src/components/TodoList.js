@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 
@@ -10,7 +10,12 @@ function TodoList() {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     } else {
-      const newTodos = [todo.text, ...todos];
+      const newTodo = {
+        id: todos.length + 1,
+        text: todo.text,
+        isCompleted: false,
+      };
+      const newTodos = [newTodo, ...todos];
       setTodos(newTodos);
       console.log(newTodos);
     }
@@ -18,8 +23,8 @@ function TodoList() {
 
   return (
     <div>
-      <TodoForm onSubmit={addTodo} />
-      <Todo />
+      <TodoForm onSubmit={addTodo} todos={todos} />
+      <Todo todos={todos} />
     </div>
   );
 }

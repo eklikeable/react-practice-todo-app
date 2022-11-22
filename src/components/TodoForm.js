@@ -10,9 +10,7 @@ function TodoForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onSubmit({
-      id: Date.now(),
       text: input,
-      isCompleted: false,
     });
     setInput('');
   };
@@ -20,13 +18,14 @@ function TodoForm(props) {
   return (
     <div>
       <h1>오늘 할 일은 오늘 끝내자!</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='todo-form'>
         <input
           type='text'
           name='text'
           value={input}
           placeholder='Add to do'
           onChange={onChange}
+          className='input-box'
         ></input>
         <button>add</button>
       </form>
