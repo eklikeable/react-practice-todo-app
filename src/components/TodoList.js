@@ -21,10 +21,28 @@ function TodoList() {
     }
   }
 
+  // 2. deleteTodo
+  const deleteTodo = (id) => {
+    todos.map((todo) => {
+      const updateTodos = todos.filter((todo) => todo.id !== id);
+      return setTodos(updateTodos);
+    });
+  };
+
+  // 3. completeTodo
+  const completeTodo = (id) => {
+    todos.map((todo) => {
+      if (todo.id === id) {
+        todo.isCompleted = !todo.isCompleted;
+      }
+      return setTodos([...todos]);
+    });
+  };
+
   return (
     <div>
       <TodoForm onSubmit={addTodo} todos={todos} />
-      <Todo todos={todos} />
+      <Todo todos={todos} deleteTodo={deleteTodo} completeTodo={completeTodo} />
     </div>
   );
 }

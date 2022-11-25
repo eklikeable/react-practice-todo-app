@@ -53,3 +53,14 @@ button {
 .button-delete {
   margin-right: 5px;
 }
+
+.complete {
+  background-color: #000;
+  opacity: 0.3;
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.todoText {
+  cursor: pointer;
+}
