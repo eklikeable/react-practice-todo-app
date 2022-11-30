@@ -9,16 +9,15 @@ function TodoList() {
   function addTodo(todo) {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
-    } else {
-      const newTodo = {
-        id: todos.length + 1,
-        text: todo.text,
-        isCompleted: false,
-      };
-      const newTodos = [newTodo, ...todos];
-      setTodos(newTodos);
-      console.log(newTodos);
     }
+    const newTodo = {
+      id: todos.length + 1,
+      text: todo.text,
+      isCompleted: false,
+    };
+    const newTodos = [newTodo, ...todos];
+    setTodos(newTodos);
+    console.log(newTodos);
   }
 
   // 2. deleteTodo
@@ -39,10 +38,25 @@ function TodoList() {
     });
   };
 
+  //4. updateTodo
+  const updateTodo = (id, newText) => {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
+    );
+  };
+
   return (
     <div>
       <TodoForm onSubmit={addTodo} todos={todos} />
-      <Todo todos={todos} deleteTodo={deleteTodo} completeTodo={completeTodo} />
+      {todos.map((todo) => (
+        <Todo
+          key={todo.id}
+          {...todo}
+          deleteTodo={deleteTodo}
+          completeTodo={completeTodo}
+          updateTodo={updateTodo}
+        />
+      ))}
     </div>
   );
 }

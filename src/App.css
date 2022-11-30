@@ -36,12 +36,18 @@ button {
   justify-content: space-between;
   border: 1px solid black;
   width: 300px;
-  height: 50px;
+  /* height: 50px; */
   line-height: 50px;
   border-radius: 5px;
   margin-bottom: 5px;
   margin-left: 20px;
   text-indent: 20px;
+  align-items: center;
+}
+
+.editInput {
+  line-height: 30px;
+  height: 30px;
 }
 .icons {
   display: flex;
@@ -54,13 +60,18 @@ button {
   margin-right: 5px;
 }
 
-.complete {
-  background-color: #000;
-  opacity: 0.3;
-  color: #ccc;
-  text-decoration: line-through;
+.button-edit {
+  height: 50px;
+  line-height: 50px;
 }
 
-.todoText {
+.complete {
+  text-decoration: line-through;
+  background: #ccc;
+}
+
+.check {
   cursor: pointer;
+  font-size: 15px;
+  margin-left: 15px;
 }
